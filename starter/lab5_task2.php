@@ -1,13 +1,14 @@
 <?php
 /**
+ * /**
  * ICS 2371 — Lab 5: Arrays and Array Operations
- * Task 2: Built-in Array Functions [6 marks]
+ * Task 1: Array Declaration, Initialisation & Traversal [6 marks]
  *
- * @author     [Your Full Name]
- * @student    [Your Reg Number, e.g. SCT212-XXXX/2024]
+ * @author     [Reuel Ng'ang'a]
+ * @student    [ENE212-0058/2023]
  * @lab        Lab 5 of 14
  * @unit       ICS 2371
- * @date       [Date completed]
+ * @date       [22nd April 2026]
  */
 
 // Working dataset — use this array for ALL exercises below
@@ -35,6 +36,28 @@ $scores = [72, 45, 88, 91, 63, 77, 55, 88, 49, 95, 63, 70];
 // TODO: Exercise B — your code here
 
 
+/**
+ * Exercise A — Counting & Summing
+ * Basic calculations for total count, sum, and average.
+ */
+
+$scores = [85, 91, 72, 88, 91, 65, 98, 77];
+
+// count() — total number of scores
+$count = count($scores);
+echo "Total number of scores: " . $count . "<br>";
+
+// array_sum() — total marks
+$total_marks = array_sum($scores);
+echo "Total marks: " . $total_marks . "<br>";
+
+// Average to 2 decimal places
+$average = $total_marks / $count;
+echo "Average score: " . number_format($average, 2) . "<br>";
+
+
+
+
 // ══════════════════════════════════════════════════════════════
 // EXERCISE C — Searching
 // ══════════════════════════════════════════════════════════════
@@ -45,6 +68,27 @@ $scores = [72, 45, 88, 91, 63, 77, 55, 88, 49, 95, 63, 70];
 //    show how to handle the false return value safely
 
 // TODO: Exercise C — your code here
+/**
+ * Exercise C — Searching
+ * Locating values and handling boolean/integer returns.
+ */
+
+// in_array() checks
+echo "Contains 88: " . (in_array(88, $scores) ? "true" : "false") . "\n";
+echo "Contains 100: " . (in_array(100, $scores) ? "true" : "false") . "\n";
+
+// array_search() for index
+$index = array_search(91, $scores);
+echo "Index of 91: " . $index . "\n";
+
+// Safe handling of false
+$search_val = 100;
+$result = array_search($search_val, $scores);
+if ($result !== false) {
+    echo "Found $search_val at index: " . $result . "\n";
+} else {
+    echo "Value $search_val not found.\n";
+}
 
 
 // ══════════════════════════════════════════════════════════════
@@ -58,3 +102,28 @@ $scores = [72, 45, 88, 91, 63, 77, 55, 88, 49, 95, 63, 70];
 // 4. array_reverse() — print reversed array
 
 // TODO: Exercise D — your code here
+/**
+ * Exercise D — Transformation
+ * Changing the structure and presentation of array data.
+ */
+
+// array_unique() — remove duplicates
+$unique = array_unique($scores);
+echo "Unique scores: " . implode(", ", $unique) . "\n";
+
+/**
+ * array_slice($scores, 2, 5) parameters:
+ * 1. $scores: The source array.
+ * 2. 2: Starting index (offset).
+ * 3. 5: Number of elements to extract (length).
+ */
+$sliced = array_slice($scores, 2, 5);
+echo "Sliced (2, 5): " . implode(", ", $sliced) . "\n";
+
+// implode() — convert to string
+echo "Imploded string: " . implode(", ", $scores) . "\n";
+
+// array_reverse() — reverse order
+$final_reverse = array_reverse($scores);
+echo "Reversed: " . implode(", ", $final_reverse) . "\n";
+?>
